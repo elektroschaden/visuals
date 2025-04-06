@@ -8,39 +8,100 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background-color: black;
+      height: 100%;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
     }
 
     video {
       width: 100%;
-      max-width: 1200px;
-      height: auto;
-      border: 2px solid #333;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: black;
     }
 
-    /* Entfernt den Download-Button */
-    video::-internal-media-controls-download-button {
-      display: none;
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
     }
 
-    video::-webkit-media-controls-enclosure {
-      overflow: hidden;
+    .play-overlay::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 22px solid white;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
     }
 
-    video::-webkit-media-controls-panel {
-      width: calc(100% + 30px);
+    .play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.2rem;
+      letter-spacing: 0.2rem;
+      color: #d0d0d0;
     }
   </style>
 </head>
 <body>
-  <video autoplay loop controls>
-    <source src="abstract-visual.mp4" type="video/mp4">
-    Dein Browser unterstützt das Video-Tag nicht.
-  </video>
+  <div class="video-wrapper">
+    <video id="customVideo" preload="auto" loop>
+      <source src="abstract-visual.mp4" type="video/mp4" />
+      Dein Browser unterstützt das Video-Tag nicht.
+    </video>
+    <div class="play-overlay" id="playOverlay"></div>
+    <h1>elektroschaden</h1>
+  </div>
+
+  <script>
+    const video = document.getElementById('customVideo');
+    const overlay = document.getElementById('playOverlay');
+
+    overlay.addEventListener('click', () => {
+      video.play();
+      overlay.classList.add('hidden');
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        overlay.classList.add('hidden');
+      } else {
+        video.pause();
+        overlay.classList.remove('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
