@@ -73,30 +73,6 @@
       color: #d8d8d8;
       text-shadow: 0 0 2px #ffffff22;
     }
-
-    .rotate-hint {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #888;
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      animation: blink 2s infinite;
-      pointer-events: none;
-    }
-
-    @media (orientation: landscape) {
-      .rotate-hint {
-        display: none;
-      }
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.2; }
-    }
   </style>
 </head>
 <body>
@@ -107,7 +83,6 @@
     </video>
     <div class="play-overlay" id="playOverlay"></div>
     <h1>elektroschaden | visuals</h1>
-    <div class="rotate-hint">für bessere Darstellung: Gerät drehen ↻</div>
   </div>
 
   <script>
@@ -143,3 +118,4 @@
   </script>
 </body>
 </html>
+
