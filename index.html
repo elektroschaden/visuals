@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>elektroschaden – Visuals</title>
+  <title>elektroschaden – visuals</title>
   <style>
     html, body {
       margin: 0;
@@ -14,19 +14,6 @@
       justify-content: center;
       align-items: center;
     }
-
-    h1 {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.2rem;
-  letter-spacing: 0.25rem;
-  color: #d8d8d8;
-  text-shadow: 0 0 2px #ffffff22;
-}
-
 
     .video-wrapper {
       position: relative;
@@ -82,8 +69,33 @@
       transform: translateX(-50%);
       font-family: 'Courier Prime', monospace;
       font-size: 1.2rem;
-      letter-spacing: 0.2rem;
-      color: #d0d0d0;
+      letter-spacing: 0.25rem;
+      color: #d8d8d8;
+      text-shadow: 0 0 2px #ffffff22;
+    }
+
+    .rotate-hint {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #888;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      animation: blink 2s infinite;
+      pointer-events: none;
+    }
+
+    @media (orientation: landscape) {
+      .rotate-hint {
+        display: none;
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
     }
   </style>
 </head>
@@ -95,6 +107,7 @@
     </video>
     <div class="play-overlay" id="playOverlay"></div>
     <h1>elektroschaden | visuals</h1>
+    <div class="rotate-hint">für bessere Darstellung: Gerät drehen ↻</div>
   </div>
 
   <script>
