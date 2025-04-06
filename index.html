@@ -114,14 +114,26 @@
     const video = document.getElementById('customVideo');
     const overlay = document.getElementById('playOverlay');
 
+    function enterFullscreen(el) {
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      }
+    }
+
     overlay.addEventListener('click', () => {
       video.play();
+      enterFullscreen(video);
       overlay.classList.add('hidden');
     });
 
     video.addEventListener('click', () => {
       if (video.paused) {
         video.play();
+        enterFullscreen(video);
         overlay.classList.add('hidden');
       } else {
         video.pause();
