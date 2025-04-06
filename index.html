@@ -89,6 +89,12 @@
     const video = document.getElementById('customVideo');
     const overlay = document.getElementById('playOverlay');
 
+    let hasStarted = false;
+
+    function isMobile() {
+      return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    }
+
     function enterFullscreen(el) {
       if (el.requestFullscreen) {
         el.requestFullscreen();
@@ -101,14 +107,16 @@
 
     overlay.addEventListener('click', () => {
       video.play();
-      enterFullscreen(video);
+      if (!hasStarted && !isMobile()) {
+        enterFullscreen(video);
+      }
+      hasStarted = true;
       overlay.classList.add('hidden');
     });
 
     video.addEventListener('click', () => {
       if (video.paused) {
         video.play();
-        enterFullscreen(video);
         overlay.classList.add('hidden');
       } else {
         video.pause();
@@ -118,4 +126,3 @@
   </script>
 </body>
 </html>
-
