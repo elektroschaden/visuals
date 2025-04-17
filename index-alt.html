@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>elektroschaden – visuals</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>elektroschaden – visuals</title>
+  <style>
     html, body {
       margin: 0;
       padding: 0;
@@ -74,33 +73,19 @@
       color: #d8d8d8;
       text-shadow: 0 0 2px #ffffff22;
     }
-  
-    .dot {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 10px;
-      height: 10px;
-      background-color: red;
-      border-radius: 50%;
-      z-index: 999;
-    }
-
-    .dot:hover {
-      transform: scale(1.4);
-    }
-</style>
+  </style>
 </head>
 <body>
-<div class="video-wrapper">
-<video id="customVideo" loop="" preload="auto">
-<source src="abstract-visual.mp4" type="video/mp4"/>
+  <div class="video-wrapper">
+    <video id="customVideo" preload="auto" loop>
+      <source src="abstract-visual.mp4" type="video/mp4" />
       Dein Browser unterstützt das Video-Tag nicht.
     </video>
-<div class="play-overlay" id="playOverlay"></div>
-<h1>elektroschaden | visuals</h1>
-</div>
-<script>
+    <div class="play-overlay" id="playOverlay"></div>
+    <h1>elektroschaden | visuals</h1>
+  </div>
+
+  <script>
     const video = document.getElementById('customVideo');
     const overlay = document.getElementById('playOverlay');
 
@@ -119,5 +104,5 @@
       }
     });
   </script>
-<a class="dot" href="/now" title="now"></a></body>
+</body>
 </html>
