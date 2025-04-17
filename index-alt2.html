@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>elektroschaden – visuals</title>
+<style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: black;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .play-overlay::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 22px solid white;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+    }
+
+    .play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.2rem;
+      letter-spacing: 0.25rem;
+      color: #d8d8d8;
+      text-shadow: 0 0 2px #ffffff22;
+    }
+  
+    .dot {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      z-index: 999;
+    }
+
+    .dot:hover {
+      transform: scale(1.4);
+    }
+</style>
+</head>
+<body>
+<div class="video-wrapper">
+<video id="customVideo" loop="" preload="auto">
+<source src="abstract-visual.mp4" type="video/mp4"/>
+      Dein Browser unterstützt das Video-Tag nicht.
+    </video>
+<div class="play-overlay" id="playOverlay"></div>
+<h1>elektroschaden | visuals</h1>
+</div>
+<script>
+    const video = document.getElementById('customVideo');
+    const overlay = document.getElementById('playOverlay');
+
+    overlay.addEventListener('click', () => {
+      video.play();
+      overlay.classList.add('hidden');
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        overlay.classList.add('hidden');
+      } else {
+        video.pause();
+        overlay.classList.remove('hidden');
+      }
+    });
+  </script>
+<a class="dot" href="https://elektroschaden.art/now" title="now"></a></body>
+</html>
